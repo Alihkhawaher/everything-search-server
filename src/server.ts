@@ -106,11 +106,9 @@ export const createServer = async () => {
       // Add rate limiting
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      // Properly handle scope concatenation
-      const searchQuery = params.scope ? 
-        params.scope.endsWith('\\') ? 
-          `${params.scope}${params.query}` : 
-          `${params.scope}\\${params.query}` :
+      // Handle search scope without direct concatenation
+      const searchQuery = params.scope && params.scope !== "C:" ? 
+        `${params.scope}\\${params.query}` :
         params.query;
 
       const response = await axios.get("http://127.0.0.1:8011/", {
