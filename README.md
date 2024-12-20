@@ -24,7 +24,16 @@ An MCP server that provides integration with Everything Search Engine, allowing 
 
 - Node.js 16 or higher
 - Everything Search Engine with HTTP Server enabled
-- Everything Search HTTP Server running on port 8011
+
+### Everything Search Configuration
+
+1. Open Everything Search
+2. Go to Tools > Options > HTTP Server
+3. Enable HTTP Server
+4. Set the HTTP Server port to 8011 (this is the default port used by this MCP server)
+5. Click OK to save changes
+
+Note: If you need to use a different port, you'll need to modify the port in `src/server.ts` where it connects to `http://127.0.0.1:8011/`
 
 ## Installation
 
